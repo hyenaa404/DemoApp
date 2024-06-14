@@ -19,7 +19,7 @@ import jakarta.servlet.http.HttpSession;
  *
  * @author LENOVO
  */
-@WebServlet(name = "LoginServlet", urlPatterns = {"/LoginServlet"})
+@WebServlet(name = "LoginServlet", urlPatterns = {"/login"})
 public class LoginServlet extends HttpServlet {
 
     /**
@@ -60,6 +60,7 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("username", u);
             session.setAttribute("role", "viewer");
             session.setMaxInactiveInterval(10 * 24 * 60 * 60);
+            session.setAttribute("disabled", "disabled");
             request.getRequestDispatcher("home.jsp").forward(request, response);
         } else {
             request.setAttribute("message", "Error name and passwword");

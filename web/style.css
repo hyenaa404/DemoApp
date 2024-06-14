@@ -44,3 +44,123 @@ table{
             font-size: 20px;
             cursor: pointer;
         }
+        
+        
+        
+.banner {
+
+    position: relative;
+    background-image: url('./img/banner-header.png');
+    /* Đường dẫn đến ảnh nền */
+    background-size: cover;
+    /* Điều chỉnh kích thước ảnh nền để bao phủ toàn bộ div */
+    /*background-position: center;*/
+    /* Canh giữa ảnh nền */
+    color: white;
+    /* Màu chữ trắng để nổi bật trên nền tối */
+    padding: 50px 20px;
+    /* Điều chỉnh padding nếu cần */
+    height: 18rem;
+    /* Chiều cao của jumbotron, điều chỉnh theo nhu cầu */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 0px;
+    margin-bottom: 50px;
+}
+
+.jumbotron::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 18rem;
+    background: rgba(0, 0, 0, 0.5);
+    /* Lớp phủ tối với độ mờ 50% */
+    z-index: 1;
+    /* Đảm bảo lớp phủ nằm trên nền nhưng dưới nội dung */
+}
+
+.jumbotron h1,
+.jumbotron p {
+    position: relative;
+    /* Đặt nội dung h1 và p trên lớp phủ */
+    z-index: 2;
+    margin: 0;
+}
+
+.login input[type="text"],
+.login input[type="password"] {
+    /*margin-top: 10px;*/
+    width: 28%;
+    min-width: 200px;
+    flex: 1;
+    /* Cho phép input chiếm toàn bộ không gian còn lại */
+    padding: 10px;
+    /* Thêm khoảng cách bên trong input */
+    border: 1.5px solid darkslategray;
+    /* Đặt border 2px màu đen */
+    border-radius: 0;
+    /* Loại bỏ bo góc */
+    box-sizing: border-box;
+    /* Bao gồm cả border và padding trong chiều rộng */
+}
+
+.w-input input[type="text"],
+.w-input input[type="password"] {
+    /*margin-top: 10px;*/
+    width: 28%;
+    min-width: 200px;
+    flex: 1;
+    /* Cho phép input chiếm toàn bộ không gian còn lại */
+    padding: 10px;
+    /* Thêm khoảng cách bên trong input */
+    border: 0px solid darkslategray;
+    /* Đặt border 2px màu đen */
+    border-radius: 0;
+    /* Loại bỏ bo góc */
+    box-sizing: border-box;
+    /* Bao gồm cả border và padding trong chiều rộng */
+}
+button,#logout,
+input[type="submit"] {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 5px 10px 5px 10px;
+    /* Thêm khoảng cách bên trong nút submit */
+    background-color: darkslategray;
+    /* Màu nền xanh */
+    color: #fff;
+    /* Màu chữ trắng */
+    border: 2px solid darkslategray;
+    /* Border cùng màu với nền */
+    border-radius: 0;
+    /* Loại bỏ bo góc */
+    cursor: pointer;
+    /* Thay đổi con trỏ khi hover lên nút */
+}
+
+.list-table {
+    width: 70%;
+    min-width: 300px;
+    margin-bottom: 40px;
+    margin-top: -10px;
+}
+
+.list-table th, .list-table td {
+    padding: 10px;
+}
+.list-table thead {
+    color: #ffffff;
+    background-color: darkslategray;
+}
+footer{
+    background-color: darkslategray;
+}
+.navi{
+    background-color: rgb(27, 45, 45);
+    height: 70px;
+}

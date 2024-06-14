@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
         <div class = header >
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-dark navi">
             <div class="container">
                 <a class="navbar-brand" href="#">Home work</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -32,7 +32,7 @@
 
 
         <!-- Banner Section -->
-        <section class="jumbotron text-center">
+        <section class="banner jumbotron text-center">
             <h1>HOME</h1>
             <p>Doing homework till 3a.m</p>
         </section>

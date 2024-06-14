@@ -26,8 +26,8 @@
             response.sendRedirect("home.jsp");
         } else {
            
-        %> <div class ="center">
-            <form action="LoginServlet" method="post">
+        %> <div class ="center login">
+            <form action="login" method="post">
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="user"><br><br>
 

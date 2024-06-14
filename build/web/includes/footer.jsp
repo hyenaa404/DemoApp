@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<footer class="bg-dark text-white text-center py-3">
+<footer class=" text-white text-center py-3">
     <div class="container">
         <p>&copy; SE18B03 class. NHSuong.</p>
         <p>Address: 123 TQC, DaNang, VietNam</p>

@@ -10,37 +10,40 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
-<div class="container bg-light text-black text-center py-3">
+<div class="w-input container bg-light text-black text-center py-3">
 
     <div class = "center">
 
 
-        <form name= "generateST" action="display" method = "post">
+        <form name= "generateST" action="display" method = "get">
             <table>
                 <tr>
                     <td>Enter name of student: </td>
-                    <td><input type="text" name="name" value="${name}"/></td>
+                    <td><input type="text" name="nameToSearch" value="${name}"/></td>
                     <td><input type="submit" value="generate" /></td>
                 </tr>
             </table>
         </form> 
+                    
+        
 
         <c:if test="${not empty students}">           
 
 
-            <table border='1'>
-                <tr><th>Id</th><th>Name</th><th>Gender</th><th>Date of Birth</th></tr></br>
-                        <c:forEach var="student" items="${students}">
-                    <form name= 'update' action='update' method = 'post'>
+            <table class ="list-table" border='1'>
+                <thead><tr><th>Id</th><th>Name</th><th>Gender</th><th>Date of Birth</th></tr></thead></br>
+                            <c:forEach var ="student" items='${students}'>
+                    <form name= 'update' action='display' method = 'post'>
+                        <input type='hidden' name='method' value="update">
                         <tr>
-                            <!--<td name ='size'>${students.size()}</td>-->
                             <td name ='id'>${student.getId()}</td>
-                            <td><input type="text" name="name_${student.getId()}" value="${student.getName()}" contenteditable="true"></td>
-                            <td><input name="isMale_${student.getId()}" type="checkbox"  ${student.isGender() ? 'checked' : ''}></td>
-                            <td><input type="text" name="dob_${student.getId()}" value="${student.getDob()}" contenteditable="true"></td>
+                            <td><input type="text" name="name_${student.getId()}" value="${student.getName()}" ${disabled}></td>
+                            <td><input name="isMale_${student.getId()}" type="checkbox" ${disabled}  ${student.isGender() ? 'checked' : ''}></td>
+                            <td><input type="text" name="dob_${student.getId()}" value="${student.getDob()}" ${disabled}></td>
                         <input type='hidden' name='id' value=${student.getId()}> 
-                        <input type="hidden" name="name" value="${name}"/></tr>
+                        </tr>
                     </c:forEach>
+                    <input type="hidden" name="nameToSearch" value="${name}"/>
             </table>
 
             <c:if test="${not empty sessionScope.username && sessionScope.role == 'admin'}">
@@ -52,18 +55,19 @@
             </c:if>
 
 
-            
+
             <br/></br>
-            <p>${status}</p>
+            <!--<p>${status}</p>-->
         </div>
         <!--<button onclick="showOverlay()">Delete Student</button>-->
         <div id="delete-overlay" class="overlay center">
             <div class="overlay-content">
                 <span class="close-btn" onclick="hideDeleteOverlay()">&times;</span>
-                <table border='1'>
+                <table  border='1'>
                     <tr><th>Id</th><th>Name</th><th>Gender</th><th>Date of Birth</th><th>Select</th></tr></br>
                             <c:forEach var="student" items="${students}">
-                        <form name= 'delete' action='delete' method = 'post'>
+                        <form name= 'delete' action='display' method = 'post'>
+                            <input type='hidden' name='method' value="delete">
                             <tr>
                                 <!--<td name ='size'>${students.size()}</td>-->
                                 <td name ='id'>${student.getId()}</td>
@@ -71,8 +75,9 @@
                                 <td><input name="isMale" type="checkbox"  ${student.isGender() ? 'checked' : '' }></td>
                                 <td name ='dob'>${student.getDob()}</td>
                                 <td><input name="isDelete" type="checkbox" value =${student.getId()} ></td
-                                <td><input type="hidden" name="name" value="${name}"/></td>                            </tr>
-                                </c:forEach>
+                                </td>                            </tr>
+                            </c:forEach>
+                        <input type="hidden" name="nameToSearch" value="${name}"/>
 
                 </table>
                 <c:if test="${not empty sessionScope.username && sessionScope.role == 'admin'}">
@@ -94,8 +99,10 @@
                 <span class="close-btn" onclick="hideInsertOverlay()">&times;</span>
                 <table border='1'>
                     <tr><th>Name</th><th>Gender</th><th>Date of Birth</th></tr></br>
-                    
-                    <form name= 'delete' action='insert' method = 'post'>
+
+                    <form name= 'insert' action='display' method = 'post'>
+                        <input type="hidden" name="nameToSearch" value="${name}"/>
+                        <input type='hidden' name='method' value="insert">
                         <tr>
                             <td><input type="text" name="name"></td>
                             <td><input name="isMale" type="checkbox"></td>
@@ -104,7 +111,7 @@
 
 
                 </table>
-                    </br><tr><button type='submit'>Add Student</button></tr>
+                </br><tr><button type='submit'>Add Student</button></tr>
 
                 </form>
 
@@ -115,10 +122,10 @@
         </div>
 
     </c:if>
+
+    <p>${status}</p>
     <br/>
-    <!--<p>${status}</p>-->
-    <br/>
-    <a href="logout">Logout</a>
+    <a id ="logout" href="logout">Logout</a> <br/>
 </div>
 
 
